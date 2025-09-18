@@ -1,0 +1,159 @@
+:root {
+--kwlogoblue: #1c5393;
+--kwblue: #2162ad;
+--kwgrey: #c7ccd1;
+--kwdarkgrey: #6a6c6c;
+--kwpalegrey: #e3e4e5;
+--kwyellow:#fae22a;
+--kwpaleblue: #8cacc8;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'testkwFont';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./oooh-baby-v4-latin_latin-ext-regular.woff2') format('woff2'), url('./oooh-baby-v4-latin_latin-ext-regular.ttf') format('truetype'); 
+}
+
+/* metamorphous-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'kwFont1';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./metamorphous-v22-latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+       url('./metamorphous-v22-latin-regular.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+
+/* lexend-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'kwFont2';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./lexend-v26-latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+       url('./lexend-v26-latin-regular.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+
+.container {
+  display: grid;
+  height: 100vh;/* Full viewport height */
+  width: 100vw;
+  background-color: var(--kwpaleblue);
+  /*justify-items: center;*/
+  /*align-items: start;*/
+  color: white;
+  font-family: 'kwFont2', Arial, sans-serif;
+  font-size: 0.5rem;
+grid-template-areas:
+    "header header"
+    "content content"
+    "footer footer";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 6fr 1fr;
+  gap: 0.5rem;
+  padding: 0rem;
+}
+
+#header, 
+.container main, 
+#footer {
+  background-color: var(--kwblue);
+  padding: 1rem;
+  border-radius: 0rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#header {
+  grid-area: header;
+  text-align-last: center;
+  font-size: 0.6rem;
+}
+
+#header nav {
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+  
+  
+#header nav a {
+  color: white;
+   text-decoration: none;    
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+#header nav a:hover {
+     color: var(--kwgrey);             
+}
+  
+.container > main {
+  grid-area: content;
+  /*align-items: center;*/
+  text-align: justify;
+  background-color: var(--kwgrey);
+}
+
+h2{
+  color:var(--kwlogoblue);
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+#footer {
+  grid-area: footer;
+  align-items: center; 
+}
+
+.container > main > table {
+   table-layout: fixed;
+   width: 92vw;
+   border-collapse: collapse;
+   overflow: hidden;
+   margin-top: 1em;
+   /*border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;*/
+   /*box-shadow: 0px 2px 12px var(--kwdarkgrey);*/
+}
+
+
+.container > main > table th, .container > main > table  td {
+   padding: 0.2rem;
+   padding-bottom: 1rem;
+   text-align: center;
+   vertical-align: top;
+ }
+
+ .container > main > table th {
+   color: white;
+    background-color: var(--kwdarkblue);
+  }
+  
+  .container > main > table tr:nth-child(odd) {
+    background-color: var(--kwgrey);
+    color: white;
+  }
+  
+  .container > main > table tr:nth-child(even) {
+   background-color: var(--kwgrey);
+  }
+
+.container > main > table td:nth-child(1) {
+    color: var(--kwdarkgrey);
+    font-weight: bold;
+    text-align: left;
+  }
+  
+
