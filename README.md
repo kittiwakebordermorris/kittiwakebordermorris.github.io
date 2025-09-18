@@ -1,1 +1,36 @@
-text here 
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kittiwake Homepage</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+<div class="container">
+  
+   <div class="header" id="header"></div>
+  
+   <main class="content">
+     <h2>test page About Us</h2>
+     <p>
+      test page
+     </p>
+   </main>
+  
+   <div class="footer" id="footer"></div>
+   
+   <script>
+    fetch("header.html")
+     .then(response => response.text())
+     .then(data => {document.getElementById("header").innerHTML = data;});
+    
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {document.getElementById("footer").innerHTML = data;});
+    </script>
+
+</div>
+</body>
+</html>
