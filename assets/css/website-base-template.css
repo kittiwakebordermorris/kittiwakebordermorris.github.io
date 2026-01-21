@@ -12,21 +12,29 @@ body, html {
 
 /*	Hero Image - Create a Parallax Effect	*/
 .bgimg-hero {
-/*  min-height: 400px; */
-  min-height: 100%;
+min-height: 800px;
+max-height: 100%;
+/*	min-height: 100%;	*/
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
+/*	Hero Branding Blocks	*/
+.bgimg-hero span {display:block; margin-left:auto; margin-right:auto; text-align:center;}
+
+/*	Hero Branding Logo Image	*/
+.bgimg-hero .main-logo {width:200px;}
+
 /* Hero Image - Mobile fallback */
 @media (max-width: 1024px) {
   .bgimg-hero {
     background-attachment: scroll;
   }
-}
 
+  .bgimg-hero .main-logo {width:150px;}
+}
 
 .w3-wide {letter-spacing: 10px;}
 .w3-hover-opacity {cursor: pointer;}
