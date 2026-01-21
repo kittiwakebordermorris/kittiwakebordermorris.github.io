@@ -1,0 +1,77 @@
+/*	Morris Book JavaScript for Kittiwake Border Morris	*/
+
+const apiUrl = "https://morrisbook.co.uk/api/v1/events?token=QyPD58QmuJvQefgGbL4Jhwmzn6tdkwzz&from=today&status=1";
+
+function getOrdinalSuffix(day) {
+ if (day > 3 && day < 21) return 'th';
+ switch (day % 10) {
+   case 1: return 'st';
+   case 2: return 'nd';
+   case 3: return 'rd';
+    default: return 'th';
+ }
+}
+
+function formatTime(time24) {
+ if (!time24) return "";
+ const parts = time24.split(':');
+ const hourStr = parts[0];
+ const minute = parts[1];
+ let hour = parseInt(hourStr, 10);
+ const ampm = hour >= 12 ? 'pm' : 'am';
+ hour = hour % 12;
+ if (hour === 0) hour = 12; // midnight or noon case
+ return `${hour}:${minute}${ampm}`;
+}
+
+fetch(apiUrl)
+  .then(response => response.json())
+  .then(data => {
+	const table = document.getElementById("eventsTable");
+	const tbody = table.querySelector("tbody");
+	const loadingMsg = document.querySelector("p");
+
+	if (!Array.isArray(data) || data.length === 0) {
+	  loadingMsg.textContent = "No events found.";
+	  return;
+	}
+
+	data.forEach(event => {
+	  const row = document.createElement("tr");
+
+	  const dateCell = document.createElement("td");
+	  if (event.start_date) {
+		const date = new Date(event.start_date);
+		const weekday = date.toLocaleDateString("en-GB", { weekday: 'short' });
+		const day = date.getDate();
+		const suffix = getOrdinalSuffix(day);
+		const month = date.toLocaleDateString("en", { month: 'short' });
+		const year = date.getFullYear();
+		dateCell.textContent = `${weekday} ${day}${suffix} ${month} ${year}`;
+	  } 
+	  else {
+	   dateCell.textContent = "";
+	  }
+
+	 const timeCell = document.createElement("td");
+	  timeRange = formatTime(event.start_time) + " - " + formatTime(event.end_time);
+	  timeCell.innerHTML = `<span style="font-size: 1.1em; font-weight: bold; font-family:'kwFont1'">${dateCell.textContent}<br>${timeRange}</span>`
+	  timeCell.style.width="30%";
+	  row.appendChild(timeCell);
+
+	  const descriptionCell = document.createElement("td");
+	  descriptionCell.style.width="70%";
+	  descriptionCell.innerHTML = `<span style="font-size: 1.5em; font-weight: bold; font-family:'kwFont1">${event.name}</span><br><br>${event.location || ""}<br><br>${event.description || ""}`;
+
+	  row.appendChild(descriptionCell);
+
+	  tbody.appendChild(row);
+	});
+
+	loadingMsg.style.display = "none";
+	table.style.display = "table";
+  })
+  .catch(error => {
+	document.querySelector("p").textContent = "Error loading events: " + error.message;
+	console.error("Fetch error:", error);
+  });
