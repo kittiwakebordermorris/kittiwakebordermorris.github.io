@@ -1,4 +1,4 @@
-:root {
+/*
 --kwlogoblue: #1c5393;
 --kwblue: #2162ad;
 --kwgrey: #c7ccd1;
@@ -6,15 +6,15 @@
 --kwpalegrey: #e3e4e5;
 --kwyellow:#fae22a;
 --kwpaleblue: #8cacc8;
-}
+*/
 
 /*	Site Header Hero Image Area	*/
 .bgimg-hero {}
 
 .bgimg-hero .site-title {
-  background-color: var(--kwlogoblue: #1c5393);
-  /*background-color: rgba(28, 83, 147, 0.6);*/ /*	--kwlogoblue: #1c5393;	*/
-  border: 1em solid black;
+  background-color: #2162ad;
+  border: 0.3em solid black;
+  margin: 0.3em;
 }
 
 /*	Hero Image per page	*/
