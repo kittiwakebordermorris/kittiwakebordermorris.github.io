@@ -1,0 +1,44 @@
+/*	Hero Image per page	*/
+/*	Hero Image - Home	*/
+.page-home .bgimg-hero {
+  background-image: url("/images/hero-images/home-hero-01.jpg");
+/*
+  min-height: 400px;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+*/
+}
+
+/*	Hero Image - Home	*/
+.page-about .bgimg-hero {
+  background-image: url("/images/hero-images/about-hero-01.jpg");
+/*
+  min-height: 400px;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+*/
+}
+
+/*	Hero Image - Home	*/
+.page-dances .bgimg-hero {
+  background-image: url("/images/hero-images/dances-hero-01.jpg");
+/*
+  min-height: 400px;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+*/
+}
+
+/*	Hero Image - Home	*/
+.page-events .bgimg-hero {
+  background-image: url("/images/hero-images/events-hero-01.jpg");
+/*
+  min-height: 400px;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+*/
+}
