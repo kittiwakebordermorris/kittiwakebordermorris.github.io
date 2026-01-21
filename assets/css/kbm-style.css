@@ -1,3 +1,21 @@
+:root {
+--kwlogoblue: #1c5393;
+--kwblue: #2162ad;
+--kwgrey: #c7ccd1;
+--kwdarkgrey: #6a6c6c;
+--kwpalegrey: #e3e4e5;
+--kwyellow:#fae22a;
+--kwpaleblue: #8cacc8;
+}
+
+/*	Site Header Hero Image Area	*/
+.bgimg-hero {}
+
+.bgimg-hero > .site-title {
+  background-color: rgba(28, 83, 147, 0.6); /*	--kwlogoblue: #1c5393;	*/
+  border: 1em solid black;
+}
+
 /*	Hero Image per page	*/
 /*	Hero Image - Home	*/
 .page-home .bgimg-hero {
