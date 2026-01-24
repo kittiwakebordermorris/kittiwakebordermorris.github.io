@@ -22,39 +22,5 @@
   margin: 0.5em;
 }
 
-/*	Hero Image per page	*/
-/*	Hero Image - Home	*/
-.page-home .bgimg-hero {
-  background-image: url("/assets/images/hero-images/home-hero-01.jpg");
-/*	min-height: 400px;	*/
-}
-
-/*	Hero Image - About Us	*/
-.page-about-us .bgimg-hero {
-  background-image: url("/assets/images/hero-images/about-us-hero-01.jpg");
-/*	min-height: 400px;	*/
-}
-
-/*	Hero Image - Dances	*/
-.page-dances .bgimg-hero {
-  background-image: url("/assets/images/hero-images/dances-hero-01.jpg");
-/*	min-height: 400px;	*/
-}
-
-/*	Hero Image - Events	*/
-.page-events .bgimg-hero {
-  background-image: url("/assets/images/hero-images/events-hero-01.jpg");
-/*	min-height: 400px;	*/
-}
-
-/*	Hero Image - Photos	*/
-.page-photos .bgimg-hero {
-  background-image: url("/assets/images/hero-images/photos-hero-01.jpg");
-/*	min-height: 400px;	*/
-}
-
-/*	Hero Image - Contact	*/
-.page-contact .bgimg-hero {
-  background-image: url("/assets/images/hero-images/contact-hero-01.jpg");
-/*	min-height: 400px;	*/
-}
+/* Colors */
+.w3-kwblue,.w3-hover-kwblue:hover{color:#fff!important;background-color:#1c5393!important}

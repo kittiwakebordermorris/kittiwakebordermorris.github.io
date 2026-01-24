@@ -47,6 +47,9 @@ body, html {
 /*	Hero Branding Logo Image	*/
 .bgimg-hero .main-logo {width:200px;}
 
+/* Colors */
+.w3-kwblue,.w3-hover-kwblue:hover{color:#fff!important;background-color:#2196F3!important}
+
 /* Hero Image - Mobile fallback */
 @media (max-width: 1024px) {
   .bgimg-hero {
