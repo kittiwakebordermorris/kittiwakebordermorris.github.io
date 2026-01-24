@@ -21,9 +21,6 @@ body, html {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
-  /* Crispness */
-  filter: grayscale(100%) contrast(1.2) brightness(1.1);
 }
 
 .bgimg-hero::before {
@@ -32,7 +29,7 @@ body, html {
   inset: 0;
 
   /* Choose your tint color */
-  background-color: #1c5393cc); /* KW Blue tint */
+  background-color: #1c5393cc; /* KW Blue tint / rgb(28 83 147 / 80%)*/
 
   /* Key magic */
   mix-blend-mode: hard-light;
@@ -41,7 +38,6 @@ body, html {
 }
 
 .bgimg-hero > div {
-  position: relative;
   z-index: 2;
 }
 
