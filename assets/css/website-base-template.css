@@ -32,10 +32,10 @@ body, html {
   inset: 0;
 
   /* Choose your tint color */
-  background-color: rgba(140, 85, 25, 0.6); /* blue tint */
+  background-color: #1c5393cc); /* KW Blue tint */
 
   /* Key magic */
-  mix-blend-mode: multiply;
+  mix-blend-mode: hard-light;
 
   z-index: 1;
 }
