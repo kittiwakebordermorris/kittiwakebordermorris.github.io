@@ -12,13 +12,37 @@ body, html {
 
 /*	Hero Image - Create a Parallax Effect	*/
 .bgimg-hero {
-min-height: 800px;
-max-height: 100%;
+  position: relative;
+  min-height: 100vh;
+/*	min-height: 800px;	*/
 /*	min-height: 100%;	*/
+/*	max-height: 100%;	*/
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  /* Crispness */
+  filter: grayscale(100%) contrast(1.2) brightness(1.1);
+}
+
+.bgimg-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  /* Choose your tint color */
+  background-color: rgba(140, 85, 25, 0.6); /* blue tint */
+
+  /* Key magic */
+  mix-blend-mode: multiply;
+
+  z-index: 1;
+}
+
+.bgimg-hero > div {
+  position: relative;
+  z-index: 2;
 }
 
 /*	Hero Branding Blocks	*/
@@ -33,7 +57,7 @@ max-height: 100%;
     background-attachment: scroll;
   }
 
-  .bgimg-hero .main-logo {width:150px;}
+  .bgimg-hero .main-logo {width:130px;}
 }
 
 .w3-wide {/*letter-spacing: 10px;*/}
@@ -44,5 +68,19 @@ max-height: 100%;
   .bgimg-hero {
     background-attachment: scroll;
     min-height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bgimg-hero .site-title {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 }
