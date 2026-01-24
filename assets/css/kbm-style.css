@@ -11,6 +11,11 @@
 /*	Site Header Hero Image Area	*/
 .bgimg-hero {}
 
+.bgimg-hero::before {
+  /* Choose your tint color */
+  background-color: #1c5393cc; /* KW Blue tint / rgb(28 83 147 / 80%)*/
+}
+
 .bgimg-hero .site-title {
   background-color: #1c5393cc;
   border: 0.2em solid black;
