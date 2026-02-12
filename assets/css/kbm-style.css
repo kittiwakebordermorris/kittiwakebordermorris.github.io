@@ -13,7 +13,7 @@
 
 .bgimg-hero::before {
   /* Choose your tint color */
-  background-color: #1c5393cc; /* KW Blue tint / rgb(28 83 147 / 80%)*/
+  /*background-color: #1c5393cc; *//* KW Blue tint / rgb(28 83 147 / 80%)*/
 }
 
 .bgimg-hero .site-title {
