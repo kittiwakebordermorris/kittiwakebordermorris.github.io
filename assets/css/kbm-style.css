@@ -9,7 +9,9 @@
 */
 
 /*	Site Header Hero Image Area	*/
-.bgimg-hero {}
+.bgimg-hero {
+  background-color: #c7ccd1;
+}
 
 .bgimg-hero::before {
   /* Choose your tint color */
