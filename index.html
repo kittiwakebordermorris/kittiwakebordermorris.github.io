@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="/assets/css/website-base-template.css">
 		<link rel="stylesheet" href="/assets/css/kbm-style.css">
 		<link rel="stylesheet" href="/assets/css/kbm-header-hero-photos.css">
+		<link rel="stylesheet" href="/assets/css/morrisbook-events.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
@@ -20,6 +21,23 @@
 			<h1 class="page-title">Kittiwake Border Morris</h1>
 			<p>This website is under construction, please check back later.</p>
 			<p>Kittiwake Border Morris are a heady mix of energy, youth, sticks and joy! Swooping into formation in Bristol in 2022, we perform a mixture of original and traditional dances accompanied by a fantastic band of talented musicians - seamlessly blending the best of tradition with fresh innovation. We are a proudly LGBTQ+ inclusive side, with a diverse range of members. Our blue, white and black tatters and feather-style faces (representing their seabird moniker), youthful energy and plenty of stick clashing make for performances that are both fun and fierce. Come along to one of our events for a mesmerising show full of yips, yells and bells!</p>
+
+		<!-- #START# [MB Events | KBM | Next 2 Future Evens] -->
+			<div id="home-events"></div>
+
+			<script src="/assets/js/morrisbook-events.js"></script>
+			<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				loadMorrisBookEvents({
+					containerId: "home-events",
+					type: "future",
+					limit: 2,
+					status: "confirmed"
+				});
+			});
+			</script>
+		<!-- #END# [MB Events | KBM | Next 2 Future Evens] -->
+
 		</div>
 
 		<div id="footer"></div>
