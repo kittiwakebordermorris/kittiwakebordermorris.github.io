@@ -13,7 +13,7 @@ window.addEventListener("load", function(){
       allow: "Accept",
       deny: "Decline",
       link: "Privacy Policy",
-      href: "/privacy.html"
+      href: "/privacy/"
     },
     onInitialise: function (status) {
       if (this.hasConsented()) {
