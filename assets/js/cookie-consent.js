@@ -1,3 +1,5 @@
+/* Osano CookieConsent */
+
 window.addEventListener("load", function(){
   window.cookieconsent.initialise({
     palette: {
@@ -5,11 +7,23 @@ window.addEventListener("load", function(){
       button: { background: "#f1d600" }
     },
     theme: "classic",
+    type: "opt-in",
     content: {
-      message: "This website uses cookies to ensure you get the best experience.",
-      dismiss: "Got it!",
-      link: "Learn more",
-      href: "/privacy/"
+      message: "We use cookies to improve your experience and analyse traffic.",
+      allow: "Accept",
+      deny: "Decline",
+      link: "Privacy Policy",
+      href: "/privacy.html"
+    },
+    onInitialise: function (status) {
+      if (this.hasConsented()) {
+        loadGoogleAnalytics();
+      }
+    },
+    onStatusChange: function(status, chosenBefore) {
+      if (this.hasConsented()) {
+        loadGoogleAnalytics();
+      }
     }
-  })
+  });
 });
