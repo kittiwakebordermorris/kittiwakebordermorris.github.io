@@ -10,6 +10,21 @@ body, html {
   line-height: 1.8;
 }
 
+/*	Wesbite Buttons	*/
+.button {
+	background-color: #04AA6D;
+	border: none;
+	color: white;
+	padding: 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 12px;
+}
+
 /*	Hero Image - Create a Parallax Effect	*/
 .bgimg-hero {
   position: relative;
