@@ -1,42 +1,44 @@
-/*	Morris Book JavaScript for Kittiwake Border Morris	*/
-
-const apiUrl = "https://morrisbook.co.uk/api/v1/events?token=QyPD58QmuJvQefgGbL4Jhwmzn6tdkwzz&from=today&status=1";
-
-// ==============================
+// ======================================
 // MorrisBook Events Loader
 // Kittiwake Border Morris
-// ==============================
+// ======================================
 
 const MORRISBOOK_API_TOKEN = "QyPD58QmuJvQefgGbL4Jhwmzn6tdkwzz";
-//const MORRISBOOK_API_URL = "https://morrisbook.co.uk/api/events";
-const MORRISBOOK_API_URL = "https://morrisbook.co.uk/api/v1/events";
+const MORRISBOOK_BASE_URL = "https://morrisbook.co.uk/api/v1/events";
 
-// ==============================
-// Fetch Events
-// ==============================
+// ======================================
+// Fetch Events From MorrisBook
+// ======================================
 
-async function fetchMorrisBookEvents() {
+async function fetchMorrisBookEvents(params = "") {
     try {
-        const response = await fetch(`${MORRISBOOK_API_URL}?token=${MORRISBOOK_API_TOKEN}`);
+        const response = await fetch(
+            `${MORRISBOOK_BASE_URL}?token=${MORRISBOOK_API_TOKEN}${params}`
+        );
+
+        if (!response.ok) {
+            throw new Error(`HTTP error ${response.status}`);
+        }
+
         const data = await response.json();
-        return data.events || [];
+        return Array.isArray(data) ? data : [];
     } catch (error) {
-        console.error("Error fetching MorrisBook events:", error);
+        console.error("MorrisBook API error:", error);
         return [];
     }
 }
 
-// ==============================
+// ======================================
 // Main Loader Function
-// ==============================
+// ======================================
 
 async function loadMorrisBookEvents(options) {
 
     const {
         containerId,
-        type = "future",        // "future" | "past"
-        limit = "all",          // number or "all"
-        status = "confirmed"    // event status filter
+        type = "future",      // "future" | "past"
+        limit = "all",        // number or "all"
+        status = 1            // numeric status (1 = confirmed)
     } = options;
 
     const container = document.getElementById(containerId);
@@ -44,29 +46,34 @@ async function loadMorrisBookEvents(options) {
 
     container.innerHTML = "<p>Loading events...</p>";
 
-    let events = await fetchMorrisBookEvents();
+    let query = "";
 
-    const now = new Date();
-
-    // Filter by status
-    events = events.filter(event => 
-        event.status && event.status.toLowerCase() === status.toLowerCase()
-    );
-
-    // Convert event date
-    events.forEach(event => {
-        event._eventDate = new Date(event.startdate);
-    });
-
-    // Filter future / past
     if (type === "future") {
-        events = events.filter(event => event._eventDate >= now);
-        events.sort((a, b) => a._eventDate - b._eventDate);
+        query += `&from=today`;
     }
 
+    if (status !== undefined) {
+        query += `&status=${status}`;
+    }
+
+    let events = await fetchMorrisBookEvents(query);
+
+    const today = new Date();
+    today.setHours(0,0,0,0);
+
+    // Filter past events manually (API doesn't support "before today")
     if (type === "past") {
-        events = events.filter(event => event._eventDate < now);
-        events.sort((a, b) => b._eventDate - a._eventDate);
+        events = events.filter(event => {
+            const eventDate = new Date(event.start_date);
+            return eventDate < today;
+        });
+
+        // Sort newest first for past events
+        events.sort((a, b) => new Date(b.start_date) - new Date(a.start_date));
+    }
+
+    if (type === "future") {
+        events.sort((a, b) => new Date(a.start_date) - new Date(b.start_date));
     }
 
     // Apply limit
@@ -83,22 +90,24 @@ async function loadMorrisBookEvents(options) {
 
     events.forEach((event, index) => {
 
-        const eventDiv = document.createElement("div");
-        eventDiv.className = "mbevent";
-        eventDiv.id = `mbevent-${containerId}-${index}`;
+        const eventDateObj = new Date(event.start_date);
 
-        const eventDate = event._eventDate.toLocaleDateString("en-GB", {
+        const formattedDate = eventDateObj.toLocaleDateString("en-GB", {
             weekday: "long",
-            year: "numeric",
+            day: "numeric",
             month: "long",
-            day: "numeric"
+            year: "numeric"
         });
 
+        const eventDiv = document.createElement("div");
+        eventDiv.className = "mbevent";
+        eventDiv.id = `${containerId}-event-${index}`;
+
         eventDiv.innerHTML = `
-            <div class="mbevent-date">${eventDate}</div>
+            <div class="mbevent-date">${formattedDate}</div>
             <div class="mbevent-title">${event.name}</div>
-            <div class="mbevent-location">${event.location || ""}</div>
-            <div class="mbevent-description">${event.description || ""}</div>
+            <div class="mbevent-location">${event.location ?? ""}</div>
+            <div class="mbevent-description">${event.description ?? ""}</div>
         `;
 
         container.appendChild(eventDiv);
