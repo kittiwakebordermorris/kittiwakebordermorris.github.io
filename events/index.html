@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="/assets/css/website-base-template.css">
 		<link rel="stylesheet" href="/assets/css/kbm-style.css">
 		<link rel="stylesheet" href="/assets/css/kbm-header-hero-photos.css">
+		<link rel="stylesheet" href="/assets/css/morrisbook-events.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
@@ -20,13 +21,37 @@
 
 			<h1 class="page-title">Events you can watch Kittiwake Border Morris perform</h1>
 
-			<p>Loading events...</p>
+		<!-- #START# [MB Events | KBM | Future & Past Evens] -->
 
-			<table id="eventsTable" style="display: none"; style="overflow-x:auto;">
-				<tbody></tbody>
-			</table>
+			<h2>Upcoming Events</h2>
+			<div id="future-events"></div>
 
-			<script src="/assets/js/morris-book.js"></script>
+			<h2>Previous Events</h2>
+			<div id="past-events"></div>
+
+			<script src="/assets/js/morrisbook-events.js"></script>
+			<script>
+			document.addEventListener("DOMContentLoaded", function () {
+
+				// All confirmed future events
+				loadMorrisBookEvents({
+					containerId: "future-events",
+					type: "future",
+					limit: "all",
+					status: "confirmed"
+				});
+
+				// All confirmed past events
+				loadMorrisBookEvents({
+					containerId: "past-events",
+					type: "past",
+					limit: "all",
+					status: "confirmed"
+				});
+
+			});
+			</script>
+		<!-- #END# [MB Events | KBM | Future & Past Evens] -->
 
 		</div>
 
