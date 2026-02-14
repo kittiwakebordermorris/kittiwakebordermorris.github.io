@@ -92,12 +92,59 @@ async function loadMorrisBookEvents(options) {
 
         const eventDateObj = new Date(event.start_date);
 
-        const formattedDate = eventDateObj.toLocaleDateString("en-GB", {
-            weekday: "long",
-            day: "numeric",
-            month: "long",
-            year: "numeric"
-        });
+		// ======================================
+		// START - Format Dates
+		// ======================================
+
+		function formatDisplayDate(dateStr) {
+			if (!dateStr) return "";
+			const d = new Date(dateStr);
+			return d.toLocaleDateString("en-GB", {
+				weekday: "long",
+				day: "numeric",
+				month: "long",
+				year: "numeric"
+			});
+		}
+
+		function formatDisplayTime(timeStr) {
+			if (!timeStr) return "";
+			return timeStr.substring(0,5); // 15:00:00 → 15:00
+		}
+
+		const startDateFormatted = formatDisplayDate(event.start_date);
+		const endDateFormatted = formatDisplayDate(event.end_date);
+
+		let dateLine = startDateFormatted;
+
+		if (event.end_date && event.end_date !== event.start_date) {
+			dateLine += " - " + endDateFormatted;
+		}
+		// ======================================
+		// START - Format Dates
+		// ======================================
+
+
+		// ======================================
+		// START - Format Times
+		// ======================================
+
+		const startTimeFormatted = formatDisplayTime(event.start_time);
+		const endTimeFormatted = formatDisplayTime(event.end_time);
+
+		let timeLine = "";
+
+		if (startTimeFormatted && endTimeFormatted) {
+			timeLine = `${startTimeFormatted} - ${endTimeFormatted}`;
+		} 
+		else if (startTimeFormatted) {
+			timeLine = startTimeFormatted;
+		}
+
+		// ======================================
+		// END - Format Times
+		// ======================================
+
 
         const eventDiv = document.createElement("div");
         eventDiv.className = "mbevent";
@@ -141,12 +188,13 @@ async function loadMorrisBookEvents(options) {
 		// END # Build Unique Event ID
 		// ======================================
 
-        eventDiv.innerHTML = `
-            <div class="mbevent-date">${formattedDate}</div>
-            <div class="mbevent-title">${event.name}</div>
-            <div class="mbevent-location">${event.location ?? ""}</div>
-            <div class="mbevent-description">${event.description ?? ""}</div>
-        `;
+		eventDiv.innerHTML = `
+		<div class="mbevent-date">${dateLine}</div>
+			${timeLine ? `<div class="mbevent-time">${timeLine}</div>` : ""}
+			<div class="mbevent-title">${event.name}</div>
+			${event.location ? `<div class="mbevent-location">${event.location}</div>` : ""}
+			${event.description ? `<div class="mbevent-description">${event.description}</div>` : ""}
+		`;
 
         container.appendChild(eventDiv);
     });
