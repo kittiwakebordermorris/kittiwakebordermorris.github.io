@@ -1,6 +1,5 @@
 /*	Hero Image per page	*/
 /*	Home		*/	.page-home .bgimg-hero {		/* min-height: 400px; */	background-image: url("/assets/images/hero-images/home-hero-01.jpg");}
-/*	About Us	*/	.page-about-us .bgimg-hero {	/* min-height: 400px; */	background-image: url("/assets/images/hero-images/about-us-hero-01.jpg");}
 /*	Contact		*/	.page-contact .bgimg-hero {		/* min-height: 400px; */	background-image: url("/assets/images/hero-images/contact-hero-01.jpg");}
 /*	Dances		*/	.page-dances .bgimg-hero {		/* min-height: 400px; */	background-image: url("/assets/images/hero-images/dances-hero-01.jpg");}
 /*	Events		*/	.page-events .bgimg-hero {		/* min-height: 400px; */	background-image: url("/assets/images/hero-images/events-hero-01.jpg");}
