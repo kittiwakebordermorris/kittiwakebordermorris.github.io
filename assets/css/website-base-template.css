@@ -71,7 +71,7 @@ body, html {
 .bgimg-hero .main-logo {width:200px;}
 
 /*	Events Listings	*/
-.events-container {display:block;}
+.events-container {display:block; text-align: center;}
 .events-list {display:block; margin-bottom:30px;}
 
 
