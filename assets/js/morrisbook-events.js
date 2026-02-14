@@ -101,7 +101,45 @@ async function loadMorrisBookEvents(options) {
 
         const eventDiv = document.createElement("div");
         eventDiv.className = "mbevent";
-        eventDiv.id = `${containerId}-event-${index}`;
+
+		// ======================================
+		// START # Build Unique Event ID
+		// ======================================
+
+		function formatDate(dateStr) {
+			if (!dateStr) return "";
+			return dateStr.replace(/-/g, ""); // 2024-05-10 → 20240510
+		}
+
+		function formatTime(timeStr) {
+			if (!timeStr) return "";
+			return timeStr.substring(0,5).replace(":", ""); // 10:30:00 → 1030
+		}
+
+		const startDate = formatDate(event.start_date);
+		const endDate = formatDate(event.end_date);
+		const startTime = formatTime(event.start_time);
+		const endTime = formatTime(event.end_time);
+
+		let eventId = type + "-event_" + startDate;
+
+		if (startTime) {
+			eventId += "." + startTime;
+		}
+
+		if (endDate) {
+			eventId += "_" + endDate;
+
+			if (endTime) {
+				eventId += "." + endTime;
+			}
+		}
+
+		eventDiv.id = eventId;
+
+		// ======================================
+		// END # Build Unique Event ID
+		// ======================================
 
         eventDiv.innerHTML = `
             <div class="mbevent-date">${formattedDate}</div>
