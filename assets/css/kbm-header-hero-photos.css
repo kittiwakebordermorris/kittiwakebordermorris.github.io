@@ -1,42 +1,9 @@
 /*	Hero Image per page	*/
-/*	Hero Image - Home	*/
-.page-home .bgimg-hero
-{
-	background-image: url("/assets/images/hero-images/home-hero-01.jpg");
-	/*	min-height: 400px;	*/
-}
-
-/*	Hero Image - About Us	*/
-.page-about-us .bgimg-hero
-{
-	background-image: url("/assets/images/hero-images/about-us-hero-01.jpg");
-	/*	min-height: 400px;	*/
-}
-
-/*	Hero Image - Dances	*/
-.page-dances .bgimg-hero
-{
-	background-image: url("/assets/images/hero-images/dances-hero-01.jpg");
-	/*	min-height: 400px;	*/
-}
-
-/*	Hero Image - Events	*/
-.page-events .bgimg-hero
-{
-	background-image: url("/assets/images/hero-images/events-hero-01.jpg");
-	/*	min-height: 400px;	*/
-}
-
-/*	Hero Image - Photos	*/
-.page-photos .bgimg-hero
-{
-	background-image: url("/assets/images/hero-images/photos-hero-01.jpg");
-	/*	min-height: 400px;	*/
-}
-
-/*	Hero Image - Contact	*/
-.page-contact .bgimg-hero
-{
-	background-image: url("/assets/images/hero-images/contact-hero-01.jpg");
-	/*	min-height: 400px;	*/
-}
+/*	Home		*/	.page-home .bgimg-hero {		/* min-height: 400px; */	background-image: url("/assets/images/hero-images/home-hero-01.jpg");}
+/*	About Us	*/	.page-about-us .bgimg-hero {	/* min-height: 400px; */	background-image: url("/assets/images/hero-images/about-us-hero-01.jpg");}
+/*	Contact		*/	.page-contact .bgimg-hero {		/* min-height: 400px; */	background-image: url("/assets/images/hero-images/contact-hero-01.jpg");}
+/*	Dances		*/	.page-dances .bgimg-hero {		/* min-height: 400px; */	background-image: url("/assets/images/hero-images/dances-hero-01.jpg");}
+/*	Events		*/	.page-events .bgimg-hero {		/* min-height: 400px; */	background-image: url("/assets/images/hero-images/events-hero-01.jpg");}
+/*	Gasllery	*/	.page-gallery .bgimg-hero {		/* min-height: 400px; */	background-image: url("/assets/images/hero-images/gallery-hero-01.jpg");}
+/*	Press		*/	.page-press .bgimg-hero {		/* min-height: 400px; */	background-image: url("/assets/images/hero-images/press-hero-01.jpg");}
+/*	Privacy		*/	.page-privacy .bgimg-hero {		/* min-height: 400px; */	background-image: url("/assets/images/hero-images/privacy-hero-01.jpg");}
