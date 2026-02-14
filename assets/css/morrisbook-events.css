@@ -1,0 +1,27 @@
+.mbevent {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    background: #fafafa;
+}
+
+.mbevent-date {
+    font-weight: bold;
+    color: #003366;
+    margin-bottom: 5px;
+}
+
+.mbevent-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.mbevent-location {
+    font-style: italic;
+    margin-top: 5px;
+}
+
+.mbevent-description {
+    margin-top: 8px;
+}
