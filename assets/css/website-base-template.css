@@ -10,6 +10,13 @@ body, html {
   line-height: 1.8;
 }
 
+/*	Headings Tags to be centred	*/
+h1,h2,h3,h4,h5,h6 {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
 /*	Wesbite Buttons	*/
 .button {
 	background-color: #04AA6D;
