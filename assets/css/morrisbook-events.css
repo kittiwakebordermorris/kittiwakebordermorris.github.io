@@ -9,7 +9,12 @@
 .mbevent-date {
     font-weight: bold;
     color: #003366;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
+}
+
+.mbevent-time {
+    margin-bottom: 6px;
+    font-style: italic;
 }
 
 .mbevent-title {
