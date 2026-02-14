@@ -22,32 +22,38 @@
 			<h1 class="page-title">Events you can watch Kittiwake Border Morris perform</h1>
 
 		<!-- #START# [MB Events | KBM | Future & Past Evens] -->
-			<h2>Upcoming Events</h2>
-			<div id="future-events"></div>
+			<div class="events-container">
+				<div class="events-list">
+					<h2>Upcoming Events</h2>
+					<div id="future-events"></div>
+				</div>
 
-			<h2>Previous Events</h2>
-			<div id="past-events"></div>
+				<div class="events-list">
+					<h2>Previous Events</h2>
+					<div id="past-events"></div>
+				</div>
 
-			<script src="/assets/js/morrisbook-events.js"></script>
-			<script>
-				document.addEventListener("DOMContentLoaded", function () {
+				<script src="/assets/js/morrisbook-events.js"></script>
+				<script>
+					document.addEventListener("DOMContentLoaded", function () {
 
-					loadMorrisBookEvents({
-						containerId: "future-events",
-						type: "future",
-						limit: "all",
-						status: 1
+						loadMorrisBookEvents({
+							containerId: "future-events",
+							type: "future",
+							limit: "all",
+							status: 1
+						});
+
+						loadMorrisBookEvents({
+							containerId: "past-events",
+							type: "past",
+							limit: "all",
+							status: 1
+						});
+
 					});
-
-					loadMorrisBookEvents({
-						containerId: "past-events",
-						type: "past",
-						limit: "all",
-						status: 1
-					});
-
-				});
-			</script>
+				</script>
+			</div>
 		<!-- #END# [MB Events | KBM | Future & Past Evens] -->
 
 		</div>

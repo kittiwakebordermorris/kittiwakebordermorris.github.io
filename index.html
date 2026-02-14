@@ -29,26 +29,29 @@
 			<p>We dress in blue, white and black tatters, decorated hats, and bells on our legs. Our face paint has a feather-style design - representing our seabird moniker.</p>
 
 		<!-- #START# [MB Events | KBM | Next 2 Future Evens] -->
-			<h2>Upcoming Events</h2>
-			<div id="home-events"></div>
-			<p>Upcoming Events</p>
+			<div class="events-container">
+				<div class="events-list">
+					<h2>Upcoming Events</h2>
+					<div id="home-events"></div>
+				</div>
 
-			<script src="/assets/js/morrisbook-events.js"></script>
-			<script>
-				document.addEventListener("DOMContentLoaded", function () {
-					loadMorrisBookEvents({
-						containerId: "home-events",
-						type: "future",
-						limit: 2,
-						status: 1   // Confirmed
+				<script src="/assets/js/morrisbook-events.js"></script>
+				<script>
+					document.addEventListener("DOMContentLoaded", function () {
+						loadMorrisBookEvents({
+							containerId: "home-events",
+							type: "future",
+							limit: 2,
+							status: 1   // Confirmed
+						});
 					});
-				});
-			</script>
+				</script>
+
+				<!--<button class="button" onclick="document.location='/events/'">See here for more events!</button>-->
+				<button class="button" onclick="document.location='/events/'">View full events list!</button>
+			</div>
 		<!-- #END# [MB Events | KBM | Next 2 Future Evens] -->
-
-			[Event Calander for the next 2 months only]
-			<button class="button" onclick="document.location='default.asp'">See here [link to event page] for more events!</button>
-
+			
 		</div>
 
 		<div id="footer"></div>
