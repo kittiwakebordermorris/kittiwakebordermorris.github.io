@@ -170,15 +170,26 @@ async function loadMorrisBookEvents(options) {
 
 		let eventId = type + "-event_" + startDate;
 
+		// Add start time if present
 		if (startTime) {
 			eventId += "." + startTime;
 		}
 
-		if (endDate) {
+		// If there is an end date AND it differs from start date
+		if (endDate && endDate !== startDate) {
+
 			eventId += "_" + endDate;
 
 			if (endTime) {
 				eventId += "." + endTime;
+			}
+
+		} else {
+
+			// No end date (single day event)
+			// But if there is an end time, add it
+			if (endTime) {
+				eventId += "_" + endTime;
 			}
 		}
 
