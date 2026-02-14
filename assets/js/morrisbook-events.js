@@ -8,8 +8,8 @@ const apiUrl = "https://morrisbook.co.uk/api/v1/events?token=QyPD58QmuJvQefgGbL4
 // ==============================
 
 const MORRISBOOK_API_TOKEN = "QyPD58QmuJvQefgGbL4Jhwmzn6tdkwzz";
-const MORRISBOOK_API_URL = "https://morrisbook.co.uk/api/events";
-// const MORRISBOOK_API_URL = "https://morrisbook.co.uk/api/v1/events";
+//const MORRISBOOK_API_URL = "https://morrisbook.co.uk/api/events";
+const MORRISBOOK_API_URL = "https://morrisbook.co.uk/api/v1/events";
 
 // ==============================
 // Fetch Events
