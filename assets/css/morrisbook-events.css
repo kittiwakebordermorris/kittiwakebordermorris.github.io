@@ -6,12 +6,12 @@
     background: #fafafa;
 }
 
-#future-events .mbevent {
+.mbevent[id^="future-event_"] {
     background-color: #eef3ff;
     /* color: #ffffff; */
 }
 
-#past-events .mbevent {
+.mbevent[id^="past-event_"] {
     background-color: #fceeee;
     /* color: #ffffff; */
 }
