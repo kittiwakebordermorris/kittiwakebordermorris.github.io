@@ -1,9 +1,19 @@
 .mbevent {
     border: 1px solid #ccc;
     padding: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     border-radius: 6px;
     background: #fafafa;
+}
+
+#future-events .mbevent {
+    background-color: #eef3ff;
+    /* color: #ffffff; */
+}
+
+#past-events .mbevent {
+    background-color: #fceeee;
+    /* color: #ffffff; */
 }
 
 .mbevent-date {
