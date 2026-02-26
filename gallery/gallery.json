@@ -1,0 +1,54 @@
+{
+  "photos": [
+    {
+      "title": "Whitby Festival 2026",
+      "description": "A brilliant weekend dancing around Whitby.",
+      "date": "2026-05-01",
+      "folder": "/gallery/images/2026/05/whitby/",
+      "items": [
+        {
+          "file": "dance1.jpg",
+          "title": "Dancing on the Harbour",
+          "description": "Kittiwake performing outside the Magpie Café."
+        },
+        {
+          "file": "dance2.jpg",
+          "title": "Full Side Set",
+          "description": "The full side lined up in traditional kit."
+        }
+      ]
+    }
+  ],
+
+  "videos": [
+    {
+      "title": "Whitby Parade 2026",
+      "description": "Our parade through the town centre.",
+      "date": "2026-05-01",
+      "folder": "/gallery/videos/2026/05/whitby/",
+      "items": [
+        {
+          "file": "parade.mp4",
+          "title": "Town Centre Parade",
+          "description": "Crowds gathered as we processed through Whitby."
+        }
+      ]
+    }
+  ],
+
+  "youtube": [
+    {
+      "title": "Whitby Performance",
+      "description": "Full dance performance at Whitby Festival.",
+      "youtubeID": "et-9-jbdllE"
+    }
+  ],
+
+  "instagram": [
+    {
+      "title": "Festival Snapshot",
+      "description": "Behind the scenes from our Whitby trip.",
+      "url": "https://www.instagram.com/p/XXXXXXXX/"
+    }
+  ]
+}
