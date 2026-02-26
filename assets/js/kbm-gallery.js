@@ -95,21 +95,36 @@ $(document).ready(function () {
         }
 
         // YouTube embeds
-        if (type === 'youtube') {
+		if (type === 'youtube') {
 
-          yrObj.data.forEach(video => {
-            $(`#${contentID}`).append(`
-              <div class="media-item">
-                <iframe width="350" height="200"
-                  src="https://www.youtube.com/embed/${video.youtubeID}"
-                  frameborder="0" allowfullscreen></iframe>
-                <p><strong>${video.title}</strong><br>${video.description}</p>
-              </div>
-            `);
-          });
+		  yrObj.data.forEach(album => {
 
-        }
+			const albumWrapper = $(`
+			  <div class="youtube-album">
+				<h3>${album.title}</h3>
+				<p>${album.description || ''}</p>
+				<div class="media-grid"></div>
+			  </div>
+			`);
 
+			const grid = albumWrapper.find('.media-grid');
+
+			album.items.forEach(video => {
+			  grid.append(`
+				<div class="media-item">
+				  <iframe width="350" height="200"
+					src="https://www.youtube.com/embed/${video.youtubeID}"
+					frameborder="0" allowfullscreen></iframe>
+				  <p><strong>${video.title}</strong><br>${video.description || ''}</p>
+				</div>
+			  `);
+			});
+
+			$(`#${contentID}`).append(albumWrapper);
+
+		  });
+
+		}
       });
 
       // Tab switching
