@@ -1,0 +1,40 @@
+.nanogallery_gallerytheme_default .nGY2GThumbnail {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.video-overlay::after {
+  content: "▶";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  padding: 5px 8px;
+  border-radius: 50%;
+  font-size: 14px;
+}
+
+.nanogallery_gallerytheme_default .nGY2GThumbnailLabel {
+  padding: 10px;
+}
+
+.nanogallery_gallerytheme_default .nGY2GThumbnailLabelTitle {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.nanogallery_gallerytheme_default .nGY2GThumbnailLabelDescription {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.media-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.media-item {
+  max-width: 350px;
+}
