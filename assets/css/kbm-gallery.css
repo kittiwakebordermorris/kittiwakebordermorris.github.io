@@ -38,3 +38,24 @@
 .media-item {
   max-width: 350px;
 }
+
+.year-tabs {
+  margin-bottom: 10px;
+}
+
+.year-tab {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-right: 5px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.year-tab.active-year {
+  background: #4285F4;
+  color: #fff;
+  border-color: #4285F4;
+}
