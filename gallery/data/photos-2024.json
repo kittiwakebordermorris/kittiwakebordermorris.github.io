@@ -1,17 +1,90 @@
 [
   {
-    "title": "Whitby Festival",
-    "description": "A brilliant weekend dancing around Whitby.",
+    "title": "Purple Patch Harvest Festival 2024",
+    "description": "",
+	"sourcecredot": "",
     "items": [
       {
-        "file": "/gallery/images/2022/whitby/dance1.jpg",
-        "title": "Dancing on the Harbour",
-        "description": "Kittiwake performing outside the Magpie Café"
+        "file": "/gallery/images/2024/purple-patch-harvest-festival/kbm-purple-patch-harvest-festival-oct2024-img01.jpg",
+        "title": "Dancing at Purple Patch Harvest Festival 2024",
+        "description": "Kittiwake performing Purple Patch Harvest Festival.",
+		"sourcecredot": ""
+      }
+    ]
+  },
+  {
+    "title": "Clifton Village Cocktail Crawl 2024",
+    "description": "",
+	"sourcecredot": "",
+    "items": [
+      {
+        "file": "/gallery/images/2024/clifton-village-cocktail-crawl/kbm-clifton-cocktail-crawl-2024-img01_photoby-ak.jpg",
+        "title": "Dancing at Clifton Village Cocktail Crawl 2024",
+        "description": "Kittiwake performing Clifton Village Cocktail Crawl.",
+		"sourcecredot": "AK"
       },
       {
-        "file": "/gallery/images/2022/whitby/dance2.jpg",
-        "title": "Full Side Set",
-        "description": "The full side lined up in traditional kit"
+        "file": "/gallery/images/2024/clifton-village-cocktail-crawl/kbm-clifton-cocktail-crawl-2024-img02_photoby-ak.jpg",
+        "title": "Dancing at Clifton Village Cocktail Crawl 2024",
+        "description": "Kittiwake Clifton Village Cocktail Crawl 2024.",
+		"sourcecredot": "AK"
+      },
+      {
+        "file": "/gallery/images/2024/clifton-village-cocktail-crawl/kbm-clifton-cocktail-crawl-2024-img03_photoby-ak.jpg",
+        "title": "Dancing at Clifton Village Cocktail Crawl 2024",
+        "description": "Kittiwake Clifton Village Cocktail Crawl 2024.",
+		"sourcecredot": "AK"
+      }
+    ]
+  },
+  {
+    "title": "Sidmouth Folk Festival 2024",
+    "description": "",
+	"sourcecredot": "",
+    "items": [
+      {
+        "file": "/gallery/images/2024/sidmouth-folk-festival/kbm-sidmouth-2024-img01-group.jpg",
+        "title": "Dancing at Sidmouth Folk Festival 2024",
+        "description": "Kittiwake performing Sidmouth Folk Festival.",
+		"sourcecredot": ""
+      }
+    ]
+  },
+  {
+    "title": "Priddy Folk Festival 2024",
+    "description": "",
+	"sourcecredot": "",
+    "items": [
+      {
+        "file": "/gallery/images/2024/priddy-folk-festival/kbm-priddy-2024-img01.jpg",
+        "title": "Dancing at Priddy Folk Festival 2024",
+        "description": "Kittiwake performing Priddy Folk Festival.",
+		"sourcecredot": ""
+      },
+      {
+        "file": "/gallery/images/2024/priddy-folk-festival/kbm-priddy-2024-img02.jpg",
+        "title": "Dancing at Priddy Folk Festival 2024",
+        "description": "Kittiwake performing Priddy Folk Festival.",
+		"sourcecredot": ""
+      }
+    ]
+  },
+  {
+    "title": "Chippenham Folk Festival 2024",
+    "description": "",
+	"sourcecredot": "",
+    "items": [
+      {
+        "file": "/gallery/images/2024/chippenham-folk-festival/kbm-chippenham-2024-img01.jpg",
+        "title": "Dancing at Chippenham Folk Festival 2024",
+        "description": "Kittiwake performing Chippenham Folk Festival.",
+		"sourcecredot": ""
+      },
+      {
+        "file": "/gallery/images/2024/chippenham-folk-festival/kbm-chippenham-2024-img02.jpg",
+        "title": "Dancing at Chippenham Folk Festival 2024",
+        "description": "Kittiwake performing Chippenham Folk Festival.",
+		"sourcecredot": ""
       }
     ]
   }
