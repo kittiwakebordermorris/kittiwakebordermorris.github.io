@@ -39,6 +39,13 @@
   max-width: 350px;
 }
 
+
+iframe.youtube-iframe {
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+}
+
 .year-tabs {
   margin-bottom: 10px;
 }
