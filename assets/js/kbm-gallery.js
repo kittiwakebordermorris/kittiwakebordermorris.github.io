@@ -160,7 +160,7 @@ $(document).ready(function () {
             album.items.forEach(video => {
               grid.append(`
                 <div class="media-item">
-                  <iframe width="350" height="200"
+                  <iframe class="youtube-iframe" width="350" height="200"
                     src="https://www.youtube.com/embed/${video.youtubeID}"
                     frameborder="0"
                     allowfullscreen>
