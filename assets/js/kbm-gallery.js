@@ -99,7 +99,9 @@ $(document).ready(function () {
               src: '',
               srct: album.items[0].file,
               title: album.title,
-              description: album.description || '',
+              description: album.description || '',,
+              sourcecredit: album.sourcecredit || '',
+			  
               ID: albumID,
               kind: 'album'
             });
@@ -111,9 +113,10 @@ $(document).ready(function () {
                 srct: i.file,
                 title: i.title || '',
                 description: i.description || '',
+                sourcecredit: i.sourcecredit || '',
                 albumID: albumID,
                 customData: { 
-                  alt: (i.title || '') + ' - ' + (i.description || '')
+                  alt: (i.title || '') + ' - ' + (i.description || '') + ' - ' + (i.sourcecredit || '')
                 },
                 kind: type === 'videos' ? 'video' : 'image'
               });
@@ -151,6 +154,7 @@ $(document).ready(function () {
               <div class="youtube-album">
                 <h3>${album.title}</h3>
                 ${album.description ? `<p>${album.description}</p>` : ''}
+                ${album.sourcecredit ? `<p>${album.sourcecredit}</p>` : ''}
                 <div class="media-grid"></div>
               </div>
             `);
@@ -167,7 +171,8 @@ $(document).ready(function () {
                   </iframe>
                   <p>
                     <strong>${video.title || ''}</strong><br>
-                    ${video.description || ''}
+                    ${video.description || ''}<br>
+                    ${video.sourcecredit || ''}
                   </p>
                 </div>
               `);
