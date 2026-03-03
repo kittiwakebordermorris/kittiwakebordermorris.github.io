@@ -99,7 +99,7 @@ $(document).ready(function () {
               src: '',
               srct: album.items[0].file,
               title: album.title,
-              description: album.description || '',,
+              description: album.description || '',x`
               sourcecredit: album.sourcecredit || '',
 			  
               ID: albumID,
