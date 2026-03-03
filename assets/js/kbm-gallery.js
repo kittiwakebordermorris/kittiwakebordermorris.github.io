@@ -125,19 +125,57 @@ $(document).ready(function () {
           });
 
           if (items.length) {
-            $(`#${contentID}`).nanogallery2({
-              items,
-              thumbnailHeight: 250,
-              thumbnailWidth: 'auto',
-              thumbnailGutterWidth: 15,
-              thumbnailGutterHeight: 15,
-              galleryDisplayMode: 'rows',
-              thumbnailLabel: { 
-                position: 'overImageOnBottom', 
-                display: true 
-              },
-              locationHash: false
-            });
+
+			  // PHOTOS → Grid albums + Justified inside
+			  if (type === 'photos') {
+
+				$(`#${contentID}`).nanogallery2({
+				  items,
+
+				  // Top level (albums) = GRID
+				  galleryDisplayMode: 'rows',
+				  thumbnailDisplayMode: 'grid',
+				  thumbnailHeight: 250,
+				  thumbnailWidth: 250,
+				  thumbnailGutterWidth: 15,
+				  thumbnailGutterHeight: 15,
+
+				  // Album label styling
+				  thumbnailLabel: {
+					position: 'overImageOnBottom',
+					display: true
+				  },
+
+				  // Inside album = JUSTIFIED
+				  thumbnailLevelUp: true,
+				  thumbnailAlignment: 'justify',
+				  thumbnailHeight: 200,
+				  thumbnailGutterWidth: 4,
+
+				  locationHash: false
+				});
+
+			  }
+
+			  // VIDEOS → leave unchanged
+			  else {
+
+				$(`#${contentID}`).nanogallery2({
+				  items,
+				  thumbnailHeight: 250,
+				  thumbnailWidth: 'auto',
+				  thumbnailGutterWidth: 15,
+				  thumbnailGutterHeight: 15,
+				  galleryDisplayMode: 'rows',
+				  thumbnailLabel: {
+					position: 'overImageOnBottom',
+					display: true
+				  },
+				  locationHash: false
+				});
+
+			  }
+
           }
         }
 
