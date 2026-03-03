@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Whitby Festival",
+    "description": "A brilliant weekend dancing around Whitby.",
+	"sourcecredit": "",
+    "items": [
+      {
+        "file": "/gallery/images/2022/whitby/dance1.jpg",
+        "title": "Dancing on the Harbour",
+        "description": "Kittiwake performing outside the Magpie Café",
+		"sourcecredit": ""
+      },
+      {
+        "file": "/gallery/images/2022/whitby/dance2.jpg",
+        "title": "Full Side Set",
+        "description": "The full side lined up in traditional kit"
+      }
+    ]
+  }
+]
