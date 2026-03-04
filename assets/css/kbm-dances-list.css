@@ -1,0 +1,28 @@
+body.page-dances .dance-list {}
+
+/* Create two equal columns that floats next to each other */
+body.page-dances .dance-list .dance-item
+{
+	float: left;
+	width: 50%;
+	padding: 25px;
+	margin-bottom: 20px;
+	/*  height: 300px; *//* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+body.page-dances .dance-list:after
+{
+	content: "";
+	display: table;
+	clear: both;
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px)
+{
+	body.page-dances .dance-list .dance-item
+	{
+		width: 100%;
+	}
+}
