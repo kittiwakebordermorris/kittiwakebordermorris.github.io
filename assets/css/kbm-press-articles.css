@@ -1,7 +1,34 @@
-body.page-press .press-item {}
+body.page-press .press-articles {}
 
-body.page-press .press-item h2 {}
-body.page-press .press-item p {}
-body.page-press .press-item a {}
-body.page-press .press-item img {}
-body.page-press .press-item button {}
+/* Create two equal columns that floats next to each other */
+body.page-press .press-articles .press-item
+{
+  float: left;
+  width: 50%;
+  padding: 25px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+body.page-press .press-articles:after
+{
+  content: "";
+  display: table;
+  clear: both;
+}
+
+body.page-press .press-articles .press-item h2 {}
+body.page-press .press-articles .press-item p {}
+body.page-press .press-articles .press-item a {}
+body.page-press .press-articles .press-item img {}
+body.page-press .press-articles .press-item button {}
+
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px)
+{
+	body.page-press .press-articles .press-item
+	{
+		width: 100%;
+	}
+}
