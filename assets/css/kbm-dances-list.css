@@ -2,7 +2,7 @@ body.page-dances .dance-list
 {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	grid-gap: 50px;
+	grid-gap: 25px;
 }
 
 /* Create two equal columns that floats next to each other */
