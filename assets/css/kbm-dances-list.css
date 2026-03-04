@@ -8,8 +8,9 @@ body.page-dances .dance-list
 /* Create two equal columns that floats next to each other */
 body.page-dances .dance-list .dance-item
 {
-	background-color: #8cacc8;
-	box-shadow: 0px 0px 5px #777;
+    background-color: #eef3ff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
 
 	width:100% !important;
 	margin-right: initial !important;
