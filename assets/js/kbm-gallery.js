@@ -2,7 +2,13 @@ $(document).ready(function () {
 
   const START_YEAR = 2022;
   const CURRENT_YEAR = new Date().getFullYear();
-  const TYPES = ['photos', 'videos', 'youtube'];
+
+  // Master = display title, Slave = internal type (lowercase)
+  const TYPES_WITH_TABS = [
+    { title: 'Photos', type: 'photos' },
+    { title: 'Videos', type: 'videos' },
+    { title: 'YouTube', type: 'youtube' }
+  ];
 
   const yearTabs = $('#year-tabs');
   const galleryContent = $('#gallery-content');
@@ -17,11 +23,10 @@ $(document).ready(function () {
     const validYears = [];
 
     for (let year = CURRENT_YEAR; year >= START_YEAR; year--) {
-
       let hasContent = false;
 
-      for (let type of TYPES) {
-        const data = await loadYear(type, year);
+      for (let typeObj of TYPES_WITH_TABS) {
+        const data = await loadYear(typeObj.type, year);
         if (data.length) {
           hasContent = true;
           break;
@@ -46,19 +51,19 @@ $(document).ready(function () {
     galleryContent.html('<div class="loading">Loading...</div>');
     const allData = {};
 
-    for (let type of TYPES) {
-      allData[type] = await loadYear(type, year);
+    for (let typeObj of TYPES_WITH_TABS) {
+      allData[typeObj.type] = await loadYear(typeObj.type, year);
     }
 
     galleryContent.empty();
 
-    TYPES.forEach(type => {
-
+    TYPES_WITH_TABS.forEach(typeObj => {
+      const type = typeObj.type;
       if (!allData[type].length) return;
 
       const section = $(`
         <section class="gallery-section">
-          <h2>${type.charAt(0).toUpperCase() + type.slice(1)}</h2>
+          <h2>${typeObj.title}</h2>
           <div class="album-grid"></div>
         </section>
       `);
@@ -74,7 +79,7 @@ $(document).ready(function () {
           const firstVideo = album.items[0];
           coverHTML = `
             <div class="album-media-wrapper">
-              <img src="https://img.youtube.com/vi/${firstVideo.youtubeID}/hqdefault.jpg" />
+              <iframe width="100%" height="160" src="https://www.youtube.com/embed/${firstVideo.youtubeID}?controls=0" frameborder="0" allowfullscreen></iframe>
               <div class="album-count">${itemCount}</div>
             </div>
           `;
@@ -99,7 +104,7 @@ $(document).ready(function () {
           </div>
         `);
 
-        card.on('click', () => openAlbum(year, type, album));
+        card.on('click', () => openAlbum(year, typeObj, album));
         grid.append(card);
       });
 
@@ -108,8 +113,8 @@ $(document).ready(function () {
 
   }
 
-  function openAlbum(year, type, album) {
-
+  function openAlbum(year, typeObj, album) {
+    const type = typeObj.type;
     galleryContent.html('');
 
     const wrapper = $(`
@@ -128,11 +133,10 @@ $(document).ready(function () {
     album.items.forEach(item => {
 
       if (type === 'youtube') {
-
         grid.append(`
           <div class="media-card">
-            <iframe width="100%" height="250"
-              src="https://www.youtube.com/embed/${item.youtubeID}"
+            <iframe width="100%" height="160"
+              src="https://www.youtube.com/embed/${item.youtubeID}?controls=1"
               frameborder="0"
               allowfullscreen>
             </iframe>
@@ -141,30 +145,27 @@ $(document).ready(function () {
             ${item.sourcecredit ? `<p class="source">${creditPrefix(type, item.sourcecredit)}</p>` : ''}
           </div>
         `);
-
       } else {
+        const card = $('<div class="media-card"></div>');
 
-		const card = $('<div class="media-card"></div>');
+        const imageWrapper = $(`
+          <div class="media-image-wrapper">
+            <a href="${item.file}" class="glightbox"
+              data-title="${item.title || ''}"
+              data-description="${item.description || ''}<br><em>${creditPrefix(type, item.sourcecredit)}</em>">
+              <img src="${item.file}">
+            </a>
+          </div>
+        `);
 
-		const imageWrapper = $(`
-		  <div class="media-image-wrapper">
-			<a href="${item.file}" class="glightbox"
-			  data-title="${item.title || ''}"
-			  data-description="${item.description || ''}<br><em>${creditPrefix(type, item.sourcecredit)}</em>">
-			  <img src="${item.file}">
-			</a>
-		  </div>
-		`);
+        const infoWrapper = $('<div class="media-info"></div>');
+        if (item.title) infoWrapper.append(`<h4>${item.title}</h4>`);
+        if (item.description) infoWrapper.append(`<p>${item.description}</p>`);
+        if (item.sourcecredit) infoWrapper.append(`<p class="source">${creditPrefix(type, item.sourcecredit)}</p>`);
 
-		const infoWrapper = $('<div class="media-info"></div>');
-
-		if (item.title) infoWrapper.append(`<h4>${item.title}</h4>`);
-		if (item.description) infoWrapper.append(`<p>${item.description}</p>`);
-		if (item.sourcecredit) infoWrapper.append(`<p class="source">${creditPrefix(type, item.sourcecredit)}</p>`);
-
-		card.append(imageWrapper);
-		card.append(infoWrapper);
-		grid.append(card);
+        card.append(imageWrapper);
+        card.append(infoWrapper);
+        grid.append(card);
       }
 
     });
@@ -176,29 +177,23 @@ $(document).ready(function () {
       touchNavigation: true,
       loop: false
     });
-
   }
 
   (async function init() {
-
     const validYears = await findValidYears();
     if (!validYears.length) return;
 
     validYears.forEach((year, index) => {
-
       const btn = $(`<button class="year-tab ${index === 0 ? 'active-year' : ''}">${year}</button>`);
-
       btn.on('click', function () {
         $('.year-tab').removeClass('active-year');
         $(this).addClass('active-year');
         buildYear(year);
       });
-
       yearTabs.append(btn);
     });
 
     buildYear(validYears[0]);
-
   })();
 
 });
