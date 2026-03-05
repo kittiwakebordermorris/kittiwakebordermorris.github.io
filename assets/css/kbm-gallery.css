@@ -1,3 +1,6 @@
+/* =========================
+   YEAR TABS
+========================= */
 .year-tabs {
   margin-bottom: 40px;
   text-align: center;
@@ -16,55 +19,79 @@
   color: #fff;
 }
 
+/* =========================
+   GRID STRUCTURE
+========================= */
 .album-grid,
 .media-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 25px;
+  gap: 30px;
 }
 
+/* =========================
+   CARD STRUCTURE
+========================= */
 .album-card,
 .media-card {
   background: #fff;
   border: 1px solid #ddd;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
+/* =========================
+   16:9 MEDIA WRAPPER
+========================= */
 .album-media-wrapper,
-.media-card img,
-.media-card iframe {
+.media-image-wrapper {
+  position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  object-fit: cover;
-  position: relative;
+  overflow: hidden;
 }
 
 .album-media-wrapper img,
-.media-card img {
+.media-image-wrapper img,
+.media-image-wrapper iframe {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
+/* =========================
+   ITEM COUNT BADGE
+========================= */
 .album-count {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 12px;
+  right: 12px;
   background: #000;
   color: #fff;
-  padding: 6px 10px;
+  padding: 6px 12px;
   font-size: 0.9em;
+  line-height: 1;
 }
 
-.album-info {
-  padding: 15px;
+/* =========================
+   TEXT CONTENT
+========================= */
+.album-info,
+.media-info {
+  padding: 15px 20px 20px;
   text-align: center;
 }
 
-.media-card h4,
-.media-card p {
-  padding: 5px 15px;
-  text-align: center;
+.album-info h3,
+.media-info h4 {
+  margin: 10px 0 8px;
+}
+
+.album-info p,
+.media-info p {
+  margin: 6px 0;
 }
 
 .source {
@@ -72,8 +99,11 @@
   color: #666;
 }
 
+/* =========================
+   BACK BUTTON
+========================= */
 .back-button {
-  margin-bottom: 25px;
+  margin-bottom: 30px;
   padding: 8px 14px;
   border: none;
   background: #000;
@@ -81,6 +111,18 @@
   cursor: pointer;
 }
 
+/* =========================
+   LIGHTBOX CAPTION FIX
+========================= */
 .glightbox-clean .gdesc {
-  text-align: center;
+  text-align: center !important;
+}
+
+.glightbox-clean .gdesc-inner {
+  text-align: center !important;
+}
+
+.glightbox-clean .gslide-title,
+.glightbox-clean .gslide-desc {
+  text-align: center !important;
 }
