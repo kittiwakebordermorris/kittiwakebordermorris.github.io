@@ -75,6 +75,12 @@ body.page-dances .dance-list:after
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px)
 {
+	
+	body.page-dances .dance-list
+	{
+		grid-template-columns: 1fr 1fr;
+	}
+
 	body.page-dances .dance-list .dance-item
 	{
 		grid-template-columns: 1fr;
