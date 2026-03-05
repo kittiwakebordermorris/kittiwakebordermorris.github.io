@@ -2,263 +2,185 @@ $(document).ready(function () {
 
   const START_YEAR = 2022;
   const CURRENT_YEAR = new Date().getFullYear();
-  const TYPES_WITH_TABS = ['photos', 'videos', 'youtube'];
+  const TYPES = ['photos', 'videos', 'youtube'];
 
-  /* ---------------------------
-     Helper: Load Year JSON
-  ---------------------------- */
-  function loadYearGallery(year, type) {
+  const yearTabs = $('#year-tabs');
+  const galleryContent = $('#gallery-content');
+
+  /* -------------------------
+     Load JSON for a year/type
+  -------------------------- */
+  function loadYear(type, year) {
     return $.getJSON(`/gallery/data/${type}-${year}.json`)
-      .then(data => {
-        if (Array.isArray(data) && data.length > 0) {
-          return { year, type, data };
-        }
-        return null;
-      })
-      .catch(() => null); // Ignore missing files
+      .then(data => (Array.isArray(data) && data.length ? data : []))
+      .catch(() => []);
   }
 
-  /* ---------------------------
-     Helper: Load Single JSON
-  ---------------------------- */
-  function loadJSONFile(file) {
-    return $.getJSON(`/gallery/data/${file}`).catch(() => []);
-  }
+  /* -------------------------
+     Find latest year with content
+  -------------------------- */
+  async function findValidYears() {
+    const validYears = [];
 
-  /* ---------------------------
-     Build Load Promises
-  ---------------------------- */
-  const promises = [];
+    for (let year = CURRENT_YEAR; year >= START_YEAR; year--) {
 
-  for (let year = CURRENT_YEAR; year >= START_YEAR; year--) {
-    TYPES_WITH_TABS.forEach(type => {
-      promises.push(loadYearGallery(year, type));
-    });
-  }
+      let hasContent = false;
 
-  const instagramPromise = loadJSONFile('instagram.json');
-
-  /* ---------------------------
-     Process All Loaded Data
-  ---------------------------- */
-  Promise.all([...promises, instagramPromise]).then(results => {
-
-    /* ===============================
-       HANDLE PHOTOS / VIDEOS / YOUTUBE
-    ================================ */
-    TYPES_WITH_TABS.forEach(type => {
-
-      const sectionResults = results.filter(r => r && r.type === type);
-      if (!sectionResults.length) return;
-
-      // Sort newest first
-      sectionResults.sort((a, b) => b.year - a.year);
-
-      const tabsContainer = $(`#${type}-year-tabs`);
-      const contentContainer = $(`#${type}-year-content`);
-
-      // Default active year = newest year WITH content
-      const defaultActiveYear = sectionResults[0].year;
-
-      sectionResults.forEach((yrObj) => {
-
-        const isActive = (yrObj.year === defaultActiveYear);
-        const activeClass = isActive ? 'active-year' : '';
-
-        /* ---- Build Tab Button ---- */
-        tabsContainer.append(
-          `<button class="year-tab ${activeClass}" data-year="${yrObj.year}">
-            ${yrObj.year}
-          </button>`
-        );
-
-        /* ---- Create Content Container ---- */
-        const contentID = `${type}-gallery-${yrObj.year}`;
-
-        contentContainer.append(
-          `<div class="year-gallery" id="${contentID}" 
-            style="display:${isActive ? 'block' : 'none'}">
-          </div>`
-        );
-
-        /* =================================
-           PHOTOS & VIDEOS (NanoGallery)
-        ================================== */
-        if (type === 'photos' || type === 'videos') {
-
-          const items = [];
-
-          yrObj.data.forEach(album => {
-
-            if (!album.items || !album.items.length) return;
-
-            const albumID = Math.random().toString(36).substr(2, 9);
-
-            // Album cover (first item)
-            items.push({
-              src: '',
-              srct: album.items[0].file,
-              title: album.title,
-              description: album.description || '',
-              sourcecredit: album.sourcecredit || '',
-			  
-              ID: albumID,
-              kind: 'album'
-            });
-
-            // Album items
-            album.items.forEach(i => {
-              items.push({
-                src: i.file,
-                srct: i.file,
-                title: i.title || '',
-                description: i.description || '',
-                sourcecredit: i.sourcecredit || '',
-                albumID: albumID,
-                customData: { 
-                  alt: (i.title || '') + ' - ' + (i.description || '') + ' - ' + (i.sourcecredit || '')
-                },
-                kind: type === 'videos' ? 'video' : 'image'
-              });
-            });
-
-          });
-
-          if (items.length) {
-
-			  // PHOTOS → Grid albums + Justified inside
-			  if (type === 'photos') {
-
-				$(`#${contentID}`).nanogallery2({
-				  items,
-
-				  // Top level (albums) = GRID
-				  galleryDisplayMode: 'rows',
-				  thumbnailDisplayMode: 'grid',
-				  thumbnailHeight: 250,
-				  thumbnailWidth: 250,
-				  thumbnailGutterWidth: 15,
-				  thumbnailGutterHeight: 15,
-
-				  // Album label styling
-				  thumbnailLabel: {
-					position: 'overImageOnBottom',
-					display: true
-				  },
-
-				  // Inside album = JUSTIFIED
-				  thumbnailLevelUp: true,
-				  thumbnailAlignment: 'justify',
-				  thumbnailHeight: 200,
-				  thumbnailGutterWidth: 4,
-
-				  locationHash: false
-				});
-
-			  }
-
-			  // VIDEOS → leave unchanged
-			  else {
-
-				$(`#${contentID}`).nanogallery2({
-				  items,
-				  thumbnailHeight: 250,
-				  thumbnailWidth: 'auto',
-				  thumbnailGutterWidth: 15,
-				  thumbnailGutterHeight: 15,
-				  galleryDisplayMode: 'rows',
-				  thumbnailLabel: {
-					position: 'overImageOnBottom',
-					display: true
-				  },
-				  locationHash: false
-				});
-
-			  }
-
-          }
+      for (let type of TYPES) {
+        const data = await loadYear(type, year);
+        if (data.length) {
+          hasContent = true;
+          break;
         }
+      }
 
-        /* =================================
-           YOUTUBE (Album Format)
-        ================================== */
-        if (type === 'youtube') {
-
-          yrObj.data.forEach(album => {
-
-            if (!album.items || !album.items.length) return;
-
-            const albumWrapper = $(`
-              <div class="youtube-album">
-                <h3>${album.title}</h3>
-                ${album.description ? `<p>${album.description}</p>` : ''}
-                ${album.sourcecredit ? `<p>${album.sourcecredit}</p>` : ''}
-                <div class="media-grid"></div>
-              </div>
-            `);
-
-            const grid = albumWrapper.find('.media-grid');
-
-            album.items.forEach(video => {
-              grid.append(`
-                <div class="media-item">
-                  <iframe class="youtube-iframe" width="350" height="200"
-                    src="https://www.youtube.com/embed/${video.youtubeID}"
-                    frameborder="0"
-                    allowfullscreen>
-                  </iframe>
-                  <p>
-                    <strong>${video.title || ''}</strong><br>
-                    ${video.description || ''}<br>
-                    ${video.sourcecredit || ''}
-                  </p>
-                </div>
-              `);
-            });
-
-            $(`#${contentID}`).append(albumWrapper);
-          });
-        }
-
-      });
-
-      /* ---- Tab Click Handler ---- */
-      tabsContainer.on('click', '.year-tab', function () {
-
-        const selectedYear = $(this).data('year');
-
-        contentContainer.find('.year-gallery').hide();
-        contentContainer.find(`#${type}-gallery-${selectedYear}`).show();
-
-        tabsContainer.find('.year-tab').removeClass('active-year');
-        $(this).addClass('active-year');
-
-      });
-
-    });
-
-    /* ===============================
-       INSTAGRAM (No Tabs)
-    ================================ */
-    const instagramData = results[results.length - 1] || [];
-
-    if (instagramData.length) {
-      const igContainer = $('#instagram-gallery');
-
-      instagramData.forEach(post => {
-        igContainer.append(`
-          <blockquote class="instagram-media">
-            <a href="${post.url}" target="_blank">
-              ${post.title || ''}
-            </a>
-            ${post.description ? `<p>${post.description}</p>` : ''}
-          </blockquote>
-        `);
-      });
+      if (hasContent) validYears.push(year);
     }
 
-  }).catch(err => {
-    console.error('Gallery load error:', err);
-  });
+    return validYears;
+  }
+
+  /* -------------------------
+     Build Year View
+  -------------------------- */
+  async function buildYear(year) {
+
+    galleryContent.html('<div class="loading">Loading...</div>');
+
+    const allData = {};
+
+    for (let type of TYPES) {
+      allData[type] = await loadYear(type, year);
+    }
+
+    galleryContent.empty();
+
+    TYPES.forEach(type => {
+
+      if (!allData[type].length) return;
+
+      const section = $(`
+        <section class="gallery-section">
+          <h2>${type.charAt(0).toUpperCase() + type.slice(1)}</h2>
+          <div class="album-grid"></div>
+        </section>
+      `);
+
+      const grid = section.find('.album-grid');
+
+      allData[type].forEach(album => {
+
+        const cover = album.items[0];
+
+        const card = $(`
+          <div class="album-card">
+            <img src="${cover.file}" alt="${cover.title || ''}">
+            <div class="album-info">
+              <h3>${album.title}</h3>
+              ${album.description ? `<p>${album.description}</p>` : ''}
+              ${album.sourcecredit ? `<p class="source">${album.sourcecredit}</p>` : ''}
+            </div>
+          </div>
+        `);
+
+        card.on('click', () => openAlbum(year, type, album));
+
+        grid.append(card);
+      });
+
+      galleryContent.append(section);
+    });
+
+  }
+
+  /* -------------------------
+     Album View (Replaces Year)
+  -------------------------- */
+  function openAlbum(year, type, album) {
+
+    galleryContent.html('');
+
+    const wrapper = $(`
+      <div class="album-view">
+        <button class="back-button">← Back to ${year}</button>
+        <h2>${album.title}</h2>
+        ${album.description ? `<p>${album.description}</p>` : ''}
+        ${album.sourcecredit ? `<p class="source">${album.sourcecredit}</p>` : ''}
+        <div class="media-grid"></div>
+      </div>
+    `);
+
+    wrapper.find('.back-button').on('click', () => buildYear(year));
+
+    const grid = wrapper.find('.media-grid');
+
+    album.items.forEach(item => {
+
+      if (type === 'youtube') {
+
+        grid.append(`
+          <div class="media-card">
+            <iframe width="100%" height="250"
+              src="https://www.youtube.com/embed/${item.youtubeID}"
+              frameborder="0" allowfullscreen></iframe>
+            <h4>${item.title || ''}</h4>
+            ${item.description ? `<p>${item.description}</p>` : ''}
+            ${item.sourcecredit ? `<p class="source">${item.sourcecredit}</p>` : ''}
+          </div>
+        `);
+
+      } else {
+
+        const link = $(`
+          <a href="${item.file}" class="glightbox"
+            data-title="${item.title || ''}"
+            data-description="${item.description || ''}<br><em>${item.sourcecredit || ''}</em>">
+            <img src="${item.file}" alt="${item.title || ''}">
+          </a>
+        `);
+
+        const card = $('<div class="media-card"></div>');
+        card.append(link);
+        card.append(`<h4>${item.title || ''}</h4>`);
+        if (item.description) card.append(`<p>${item.description}</p>`);
+        if (item.sourcecredit) card.append(`<p class="source">${item.sourcecredit}</p>`);
+
+        grid.append(card);
+      }
+
+    });
+
+    galleryContent.append(wrapper);
+
+    GLightbox({
+      selector: '.glightbox'
+    });
+
+  }
+
+  /* -------------------------
+     Init
+  -------------------------- */
+  (async function init() {
+
+    const validYears = await findValidYears();
+    if (!validYears.length) return;
+
+    validYears.forEach((year, index) => {
+
+      const btn = $(`<button class="year-tab ${index === 0 ? 'active-year' : ''}">${year}</button>`);
+
+      btn.on('click', function () {
+        $('.year-tab').removeClass('active-year');
+        $(this).addClass('active-year');
+        buildYear(year);
+      });
+
+      yearTabs.append(btn);
+    });
+
+    buildYear(validYears[0]);
+
+  })();
 
 });
