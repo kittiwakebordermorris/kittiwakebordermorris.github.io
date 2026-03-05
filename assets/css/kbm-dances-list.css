@@ -1,0 +1,71 @@
+body.page-dances .dance-list
+{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 25px;
+}
+
+/* Create two equal columns that floats next to each other */
+body.page-dances .dance-list .dance-item
+{
+    background-color: #eef3ff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+	width:100% !important;
+	margin-right: initial !important;
+	margin-bottom: initial !important;
+	margin-left: initial !important;
+	padding: 25px;
+
+/*
+	float: left;
+	width: 50%;
+	padding: 25px;
+	margin-bottom: 20px;
+*/
+	/*  height: 300px; *//* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+body.page-dances .dance-list:after
+{
+/*
+	content: "";
+	display: table;
+	clear: both;
+*/
+}
+
+/* Morris Dance Database DIV area styling */
+#morrisdancedatabase
+{
+	display: grid;
+	grid-template-columns: auto auto;
+	gap: 5px;
+	padding: 5px;
+}
+
+#morrisdancedatabase p, 
+#morrisdancedatabase h1
+{
+}
+
+#morrisdancedatabase img
+{
+	grid-row-start: 1;
+	grid-row-end: 3;
+}
+
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px)
+{
+	body.page-dances .dance-list .dance-item
+	{
+		grid-template-columns: 1fr;
+/*
+		width: 100%;
+*/
+	}
+}
