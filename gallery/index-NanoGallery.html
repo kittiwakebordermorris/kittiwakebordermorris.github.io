@@ -4,26 +4,22 @@
 		<title>Gallery – Kittiwake Border Morris</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-
 		<link rel="stylesheet" href="/assets/css/w3.css">
 		<link rel="stylesheet" href="/assets/css/website-base-template.css">
 		<link rel="stylesheet" href="/assets/css/kbm-style.css">
 		<link rel="stylesheet" href="/assets/css/kbm-header-hero-photos.css">
 		<link rel="stylesheet" href="/assets/css/kbm-gallery.css">
-
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 	<!-- [START | Cookie Consent] - Script Loads -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
 		<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
 	<!-- [END | Cookie Consent] - Script Loads -->
-
-	<!-- [START | Gallery - Lightbox] - Script Loads -->
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
-		<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+	<!-- [START | Gallery] - Script Loads -->
+		<link rel="stylesheet" href="/assets/css/nanogallery2/nanogallery2.min.css">
 		<script src="/assets/js/jquery/jquery-3.7.1.min.js"></script>
-	<!-- [END | Gallery - Lightbox] - Script Loads -->
+		<script src="/assets/js/nanogallery2/jquery.nanogallery2.min.js"></script>
+	<!-- [END | Gallery] - Script Loads -->
 	</head>
 
 	<body class="page-gallery">
@@ -32,26 +28,39 @@
 
 		<div class="w3-content w3-container w3-padding-64">
 			<h1 class="page-title">Kittiwake Border Morris Gallery</h1>
+		<!-- Dynamic galleries will be appended here -->
+			<div id="gallery-sections">
 
-		<!-- [START | Years Tabs] -->
-			<div id="year-tabs" class="year-tabs"></div>
-		<!-- [END | Years Tabs] -->
+				<section class="gallery-section" id="photos-section">
+					<h2>Photos</h2>
+					<div class="year-tabs" id="photos-year-tabs"></div>
+					<div class="year-content" id="photos-year-content"></div>
+				</section>
 
-		<!-- [START | Dynamic Content] -->
-			<div id="gallery-content"></div>
-		<!-- [END | Dynamic Content] -->
+				<section class="gallery-section" id="videos-section">
+					<h2>Videos</h2>
+					<div class="year-tabs" id="videos-year-tabs"></div>
+					<div class="year-content" id="videos-year-content"></div>
+				</section>
 
-		<!-- [START | Instagram] -->
-			<section class="gallery-section" id="instagram-section">
-				<h2>Instagram</h2>
-				<div class="media-grid" id="instagram-gallery"></div>
-			</section>
-		<!-- [END | Instagram] -->
+				<section class="gallery-section" id="youtube-section">
+					<h2>YouTube</h2>
+					<div class="year-tabs" id="youtube-year-tabs"></div>
+					<div class="year-content" id="youtube-year-content"></div>
+				</section>
 
+				<section class="gallery-section" id="instagram-section">
+					<h2>Instagram</h2>
+					<div class="media-grid" id="instagram-gallery"></div>
+				</section>
+
+			</div>
 		</div>
 
+	<!-- [START | KBM Gallery] - Run Banner Script -->
 		<script src="/assets/js/kbm-gallery.js"></script>
-
+	<!-- [END | KBM Gallery] - Run Banner Script -->
+			
 		<div id="footer"></div>
 
 		<script src="/assets/js/includes.js"></script>
@@ -59,9 +68,8 @@
 			loadInclude("header", "/assets/includes/header.html");
 			loadInclude("footer", "/assets/includes/footer.html");
 		</script>
-
+		<script src="/assets/js/modal-image-gallery.js"></script>
 		<script src="/assets/js/navbar-menu.js"></script>
-
 
 	<!-- [START | Google tag (gtag.js)] -->
 		<script src="/assets/js/cookie-consent-google-analytics.js"></script>
@@ -69,7 +77,6 @@
 	<!-- [START | Cookie Consent] - Run Banner Script -->
 		<script src="/assets/js/cookie-consent.js"></script>
 	<!-- [END | Cookie Consent] - Run Banner Script -->
-
 
 	</body>
 </html>
