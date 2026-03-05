@@ -144,22 +144,27 @@ $(document).ready(function () {
 
       } else {
 
-        const card = $('<div class="media-card"></div>');
+		const card = $('<div class="media-card"></div>');
 
-        const link = $(`
-          <a href="${item.file}" class="glightbox"
-            data-title="${item.title || ''}"
-            data-description="${item.description || ''}<br><em>${creditPrefix(type, item.sourcecredit)}</em>">
-            <img src="${item.file}">
-          </a>
-        `);
+		const imageWrapper = $(`
+		  <div class="media-image-wrapper">
+			<a href="${item.file}" class="glightbox"
+			  data-title="${item.title || ''}"
+			  data-description="${item.description || ''}<br><em>${creditPrefix(type, item.sourcecredit)}</em>">
+			  <img src="${item.file}">
+			</a>
+		  </div>
+		`);
 
-        card.append(link);
-        card.append(`<h4>${item.title || ''}</h4>`);
-        if (item.description) card.append(`<p>${item.description}</p>`);
-        if (item.sourcecredit) card.append(`<p class="source">${creditPrefix(type, item.sourcecredit)}</p>`);
+		const infoWrapper = $('<div class="media-info"></div>');
 
-        grid.append(card);
+		if (item.title) infoWrapper.append(`<h4>${item.title}</h4>`);
+		if (item.description) infoWrapper.append(`<p>${item.description}</p>`);
+		if (item.sourcecredit) infoWrapper.append(`<p class="source">${creditPrefix(type, item.sourcecredit)}</p>`);
+
+		card.append(imageWrapper);
+		card.append(infoWrapper);
+		grid.append(card);
       }
 
     });
