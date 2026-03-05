@@ -48,8 +48,22 @@ body.page-dances .dance-list:after
 	place-items: center;
 }
 
-#morrisdancedatabase .mddb-info {}
-#morrisdancedatabase .mddb-title {}
+#morrisdancedatabase .mddb-title
+{
+	margin: auto;
+	padding-top: 5px;
+}
+
+#morrisdancedatabase .mddb-info
+{
+	margin: auto;
+	padding-bottom: 5px;
+}
+
+#morrisdancedatabase .mddb-info p
+{
+	margin: auto;
+}
 
 #morrisdancedatabase .mddb-logo
 {
