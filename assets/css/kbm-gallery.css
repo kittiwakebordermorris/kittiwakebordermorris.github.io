@@ -1,50 +1,70 @@
 .year-tabs {
   margin-bottom: 40px;
+  text-align: center;
 }
 
 .year-tab {
   padding: 8px 16px;
-  margin-right: 10px;
+  margin: 5px;
   border: 1px solid #ccc;
   background: #f5f5f5;
   cursor: pointer;
 }
 
 .active-year {
-  background: #333;
+  background: #000;
   color: #fff;
 }
 
 .album-grid,
 .media-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
 }
 
 .album-card,
 .media-card {
   background: #fff;
   border: 1px solid #ddd;
-  cursor: pointer;
-  transition: 0.2s ease;
+  text-align: center;
 }
 
-.album-card:hover {
-  transform: translateY(-3px);
+.album-media-wrapper,
+.media-card img,
+.media-card iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  position: relative;
 }
 
-.album-card img,
+.album-media-wrapper img,
 .media-card img {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
+  object-fit: cover;
 }
 
-.album-info,
+.album-count {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #000;
+  color: #fff;
+  padding: 6px 10px;
+  font-size: 0.9em;
+}
+
+.album-info {
+  padding: 15px;
+  text-align: center;
+}
+
 .media-card h4,
 .media-card p {
-  padding: 10px;
+  padding: 5px 15px;
+  text-align: center;
 }
 
 .source {
@@ -53,10 +73,14 @@
 }
 
 .back-button {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   padding: 8px 14px;
   border: none;
-  background: #333;
+  background: #000;
   color: #fff;
   cursor: pointer;
+}
+
+.glightbox-clean .gdesc {
+  text-align: center;
 }
