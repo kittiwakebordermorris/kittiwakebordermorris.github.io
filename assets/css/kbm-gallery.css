@@ -78,6 +78,10 @@
 /* =========================
    TEXT CONTENT
 ========================= */
+.album-view {
+  text-align: center;
+}
+
 .album-info,
 .media-info {
   padding: 15px 20px 20px;
