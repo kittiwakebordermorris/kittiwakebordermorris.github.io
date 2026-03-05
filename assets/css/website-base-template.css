@@ -80,7 +80,7 @@ h1,h2,h3,h4,h5,h6 {
 .bgimg-hero .main-logo {width:200px;}
 
 /*	Events Listings	*/
-.events-container {display:block; text-align: center;}
+.events-container {display:block; text-align: center; margin-bottom:60px;}
 .events-list {display:block; margin-bottom:60px;}
 
 
