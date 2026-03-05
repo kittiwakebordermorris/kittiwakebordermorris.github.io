@@ -78,11 +78,6 @@ body.page-dances .dance-list:after
 	
 	body.page-dances .dance-list
 	{
-		grid-template-columns: 1fr 1fr;
-	}
-
-	body.page-dances .dance-list .dance-item
-	{
 		grid-template-columns: 1fr;
 /*
 		width: 100%;
