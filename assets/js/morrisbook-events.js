@@ -65,7 +65,9 @@ async function loadMorrisBookEvents(options) {
     if (type === "past") {
         events = events.filter(event => {
             const eventDate = new Date(event.start_date);
-            return eventDate < today;
+			const cutoffDate = new Date();
+            cutoffDate.setMonth(cutoffDate.getMonth() - 13);
+            return eventDate < today && eventDate >= cutoffDate;
         });
 
         // Sort newest first for past events
@@ -210,3 +212,4 @@ async function loadMorrisBookEvents(options) {
         container.appendChild(eventDiv);
     });
 }
+
