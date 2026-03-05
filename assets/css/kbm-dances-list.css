@@ -3,6 +3,7 @@ body.page-dances .dance-list
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-gap: 25px;
+	margin-bottom: 50px;
 }
 
 /* Create two equal columns that floats next to each other */
@@ -40,18 +41,17 @@ body.page-dances .dance-list:after
 /* Morris Dance Database DIV area styling */
 #morrisdancedatabase
 {
-	display: grid;
+	display: inline-grid;
 	grid-template-columns: auto auto;
 	gap: 5px;
 	padding: 5px;
+	place-items: center;
 }
 
-#morrisdancedatabase p, 
-#morrisdancedatabase h1
-{
-}
+#morrisdancedatabase .mddb-info {}
+#morrisdancedatabase .mddb-title {}
 
-#morrisdancedatabase img
+#morrisdancedatabase .mddb-logo
 {
 	grid-row-start: 1;
 	grid-row-end: 3;
