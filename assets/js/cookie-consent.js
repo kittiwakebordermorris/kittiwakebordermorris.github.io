@@ -12,8 +12,8 @@ window.addEventListener("load", function(){
       message: "We use cookies to improve your experience and analyse traffic.",
       allow: "Accept",
       deny: "Decline",
-      link: "Privacy Policy",
-      href: "/privacy/"
+      <!-- link: "Privacy Policy", -->
+      <!-- href: "/privacy/" -->
     },
     onInitialise: function (status) {
       if (this.hasConsented()) {
