@@ -204,10 +204,10 @@ async function loadMorrisBookEvents(options) {
         const description = event.description;
 
         // Extract all URLs
-        const urls = description.match(/https?://[^\s<>"']+/g) || [];
+        const urls = description.match(/https?:\/\/[^\s<>"']+/g) || [];
 
         // Remove URLs from the original text
-        const cleanText = description.replace(/https?://[^\s<>"']+/g, '').trim();
+        const cleanText = description.replace(/https?:\/\/[^\s<>"']+/g, '').trim();
 
         // Create clickable links
         const links = urls.map(url => <a href="${url}">${url}&lt;/a>).join('<br>');
