@@ -201,7 +201,7 @@ async function loadMorrisBookEvents(options) {
 		// END # Build Unique Event ID
 		// ======================================
 
-        const description = event.description;
+        const description = event.description || "";
 
         // Extract all URLs
         const urls = description.match(/https?:\/\/[^\s<>"']+/g) || [];
@@ -210,11 +210,10 @@ async function loadMorrisBookEvents(options) {
         const cleanText = description.replace(/https?:\/\/[^\s<>"']+/g, '').trim();
 
         // Create clickable links
-        const links = urls.map(url => <a href="${url}">${url}</a>).join('<br>');
+        const links = urls.map(url => `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`).join('<br>');
 
         // Combine everything
-        const info = ${cleanText}<br>${links};
-
+        const info = `${cleanText}${links ? '<br>' + links : ''}`;
 
 		eventDiv.innerHTML = `
 		<div class="mbevent-date">${dateLine}</div>
