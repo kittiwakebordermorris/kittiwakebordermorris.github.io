@@ -203,7 +203,7 @@ async function loadMorrisBookEvents(options) {
 
         const description = event.description || "";
 
-        const info = description.replace(/https?:\/\/[^\s<>"']+/g,url => `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`);
+        const info = description.replace(/(?:https?:\/\/|www\.)[^\s<>"']+/g,url => {const href = url.startsWith("www.") ? `https://${url}` : url;return `<a href="${href}" target="_blank" rel="noopener noreferrer">${url}</a>`;});
 		
         eventDiv.innerHTML = `
 		<div class="mbevent-date">${dateLine}</div>
