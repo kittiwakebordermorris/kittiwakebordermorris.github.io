@@ -202,7 +202,9 @@ async function loadMorrisBookEvents(options) {
 		// ======================================
 
 
-		const info = event.description + <a href="https://kittiwakebordermorris.co.uk/">linktext</a>
+		linkfreeinfo = event.description
+
+		const info = linkfreeinfo + <a href="https://kittiwakebordermorris.co.uk/">linktext</a>
 		
 
 		eventDiv.innerHTML = `
