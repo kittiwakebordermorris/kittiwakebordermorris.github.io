@@ -201,13 +201,20 @@ async function loadMorrisBookEvents(options) {
 		// END # Build Unique Event ID
 		// ======================================
 
+        const description = event.description;
 
-		const linkfreeinfo = event.description
+        // Extract all URLs
+        const urls = description.match(/https?://[^\s<>"']+/g) || [];
 
-		const linktext = event.description
+        // Remove URLs from the original text
+        const cleanText = description.replace(/https?://[^\s<>"']+/g, '').trim();
 
-		const info = `${linkfreeinfo} <br> <a href="https://kittiwakebordermorris.co.uk/">${linktext}</a> `;
-		
+        // Create clickable links
+        const links = urls.map(url => <a href="${url}">${url}&lt;/a>).join('<br>');
+
+        // Combine everything
+        const info = ${cleanText}<br>${links};
+
 
 		eventDiv.innerHTML = `
 		<div class="mbevent-date">${dateLine}</div>
