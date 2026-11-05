@@ -202,7 +202,7 @@ async function loadMorrisBookEvents(options) {
 		// ======================================
 
 
-		const externallink = <a href="https://kittiwakebordermorris.co.uk/">event.description</a>
+		const info = event.description + <a href="https://kittiwakebordermorris.co.uk/">linktext</a>
 		
 
 		eventDiv.innerHTML = `
@@ -210,7 +210,7 @@ async function loadMorrisBookEvents(options) {
 			${timeLine ? `<div class="mbevent-time">${timeLine}</div>` : ""}
 			<div class="mbevent-title">${event.name}</div>
 			${event.location ? `<div class="mbevent-location">${event.location}</div>` : ""}
-			${event.description ? `<div class="mbevent-description">${externallink}</div>` : ""}
+			${event.description ? `<div class="mbevent-description">${info}</div>` : ""}
 		`;
 
         container.appendChild(eventDiv);
