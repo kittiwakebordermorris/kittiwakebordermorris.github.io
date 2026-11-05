@@ -210,7 +210,7 @@ async function loadMorrisBookEvents(options) {
         const cleanText = description.replace(/https?:\/\/[^\s<>"']+/g, '').trim();
 
         // Create clickable links
-        const links = urls.map(url => <a href="${url}">${url}&lt;/a>).join('<br>');
+        const links = urls.map(url => <a href="${url}">${url}</a>).join('<br>');
 
         // Combine everything
         const info = ${cleanText}<br>${links};
