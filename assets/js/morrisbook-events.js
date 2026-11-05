@@ -206,7 +206,7 @@ async function loadMorrisBookEvents(options) {
 
 		const linktext = "dogs"
 
-		const info = linkfreeinfo + <br> + ' <a href="https://kittiwakebordermorris.co.uk/">linktext</a> '
+		const info = linkfreeinfo + ' <a href="https://kittiwakebordermorris.co.uk/">linktext</a> '
 		
 
 		eventDiv.innerHTML = `
