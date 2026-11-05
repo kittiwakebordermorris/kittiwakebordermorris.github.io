@@ -201,12 +201,16 @@ async function loadMorrisBookEvents(options) {
 		// END # Build Unique Event ID
 		// ======================================
 
+
+		const externallink = event.description + "test"
+		
+
 		eventDiv.innerHTML = `
 		<div class="mbevent-date">${dateLine}</div>
 			${timeLine ? `<div class="mbevent-time">${timeLine}</div>` : ""}
 			<div class="mbevent-title">${event.name}</div>
 			${event.location ? `<div class="mbevent-location">${event.location}</div>` : ""}
-			${event.description ? `<div class="mbevent-description">${event.description}</div>` : ""}
+			${event.description ? `<div class="mbevent-description">${externallink}</div>` : ""}
 		`;
 
         container.appendChild(eventDiv);
